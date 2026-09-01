@@ -1,0 +1,21 @@
+[project]
+name = "mini-proj1"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Sebastian Bech", email = "ebbers999@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "numpy>=2.5.2",
+    "pandas>=3.0.5",
+    "torch>=2.13.0",
+]
+
+[project.scripts]
+mini-proj1 = "mini_proj1:main"
+
+[build-system]
+requires = ["uv_build>=0.12.2,<0.13.0"]
+build-backend = "uv_build"
