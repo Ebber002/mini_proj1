@@ -3,7 +3,7 @@
   <a href="">
     <img src="https://github.com/user-attachments/assets/e21f2d45-6775-48d8-bf8b-9b1cb99d22e5" alt="Logo" height="80">
   </a>
-  <h3>For Course - 02464 AI and Human Cognition</h3>
+  <h3>Group 3 - 02464 AI and Human Cognition</h3>
 </div>
 
 ---
@@ -102,5 +102,3 @@ The CSV files are the source of truth for counting completed runs. Participants 
 | `secondary` | Articulatory suppression, finger tapping and error patterns             |
 
 Analysis will be implemented separately and will read the collected CSV files after data collection.
-
-```
