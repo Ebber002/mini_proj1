@@ -52,7 +52,7 @@ def save_run(
                 experiment_fields.append(field)
 
     output_directory.mkdir(parents=True, exist_ok=True)
-    run_timestamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
+    run_timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     path = output_directory / f"{experiment}_id{participant_id}_{run_timestamp}.csv"
     fieldnames = [*METADATA_FIELDS, *experiment_fields]
 
