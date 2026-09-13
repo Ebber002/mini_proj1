@@ -6,6 +6,7 @@ Each returned dictionary represents one row to be saved by the centralized CSV l
 """
 
 from experiments import capacity, chunking, recall, secondary
+from experiments.free_recall_baseline import OUTPUT_CSV_PATH, run_free_recall_baseline
 from utils.data import get_run_counts, save_run
 from utils.participants import allocate_participant_id, is_valid_returning_id
 
@@ -39,6 +40,24 @@ def experiment_menu(participant_id: int) -> None:
             continue
 
         name, label, module = EXPERIMENTS[choice]
+
+        if name == "recall":
+            entered = input("Enter repetition number (1-5): ").strip()
+            try:
+                repetition_number = int(entered)
+            except ValueError:
+                print("Repetition number must be a whole number.")
+                continue
+
+            try:
+                run_free_recall_baseline(participant_id, repetition_number)
+            except Exception as error:
+                print(f"The experiment could not be completed: {error}")
+                continue
+
+            print(f"Experiment complete.\nData saved to: {OUTPUT_CSV_PATH}")
+            continue
+
         run = getattr(module, "run", None)
         if not callable(run):
             print(f"{label} experiment is not implemented yet.")
