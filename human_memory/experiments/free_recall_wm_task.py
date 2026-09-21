@@ -1,13 +1,16 @@
 """
-Free Recall Block - Baseline condition.
+Free Recall Block - WM Task condition.
 
-Standard presentation rate, immediate free recall (Experimental_Architecture.md,
-Section 2, condition 1). Presents a 15-word list built by the shared
-stimulus-generation function, collects one typed recall response, scores it
-against the presented words, and appends the results to a CSV file.
+Standard presentation rate, followed by 15 seconds of active tongue-twister
+reading, then immediate free recall (Experimental_Architecture.md, Section 2,
+condition 3). Presents a 15-word list built by the shared stimulus-generation
+function, runs the working-memory interference phase, collects one typed
+recall response, scores it against the presented words, and appends the
+results to a CSV file.
 """
 
 import csv
+import random
 import time
 from pathlib import Path
 
@@ -17,12 +20,22 @@ from stimulus import generate_word_list
 # ---------------------------------------------------------------- #
 # Tunable parameters - change these, not the logic below.          #
 # ---------------------------------------------------------------- #
-LIST_LENGTH = 15                # number of words presented per trial
-PRESENTATION_RATE_SEC = 2.0     # seconds each word stays on screen
-COUNTDOWN_SEC = 3               # countdown shown before presentation starts
-BLANK_LINES_BETWEEN_WORDS = 30  # printed to clear the previous word from view
-OUTPUT_CSV_PATH = Path(__file__).resolve().parent.parent / "data" / "free_recall_baseline.csv"
+LIST_LENGTH = 15                  # number of words presented per trial
+PRESENTATION_RATE_SEC = 2.0       # seconds each word stays on screen
+COUNTDOWN_SEC = 3                 # countdown shown before presentation starts
+BLANK_LINES_BETWEEN_WORDS = 30    # printed to clear the previous word from view
+INTERFERENCE_DURATION_SEC = 15    # seconds spent reading the tongue twister aloud
+OUTPUT_CSV_PATH = Path(__file__).resolve().parent.parent / "data" / "free_recall_wm_task.csv"
 CSV_FIELDNAMES = ["participant_id", "repetition", "list_position", "word", "category", "recalled"]
+
+TONGUE_TWISTERS = [
+    "Peter Piper picked a peck of pickled peppers.",
+    "She sells seashells by the seashore.",
+    "How much wood would a woodchuck chuck if a woodchuck could chuck wood?",
+    "Betty Botter bought some butter, but she said the butter's bitter.",
+    "Fuzzy Wuzzy was a bear, Fuzzy Wuzzy had no hair.",
+    "Red lorry, yellow lorry, red lorry, yellow lorry.",
+]
 
 
 def _present_word_list(word_category_pairs):
@@ -36,6 +49,15 @@ def _present_word_list(word_category_pairs):
         print(word)
         time.sleep(PRESENTATION_RATE_SEC)
     print("\n" * BLANK_LINES_BETWEEN_WORDS)
+
+
+def _run_interference_phase():
+    # Have the participant read a tongue twister aloud, repeatedly, for INTERFERENCE_DURATION_SEC.
+    twister = random.choice(TONGUE_TWISTERS)
+    print("\nNow read the following sentence aloud, over and over, until told to stop:\n")
+    print(twister)
+    time.sleep(INTERFERENCE_DURATION_SEC)
+    print("\nStop. Get ready to recall the words.\n")
 
 
 def _collect_recall_response():
@@ -80,17 +102,19 @@ def _append_rows_to_csv(rows, participant_id, repetition_number):
             )
 
 
-def run_free_recall_baseline(participant_id, repetition_number):
+def run_free_recall_wm_task(participant_id, repetition_number):
     """
-    Run one Baseline Free Recall trial for a participant.
+    Run one WM Task Free Recall trial for a participant.
 
     Generates a LIST_LENGTH-word list, presents it at PRESENTATION_RATE_SEC
-    seconds per word, collects a single typed recall response, scores each
-    presented word as recalled or not, and appends the results to
-    OUTPUT_CSV_PATH. Returns the list of row dictionaries that were logged.
+    seconds per word, runs an INTERFERENCE_DURATION_SEC tongue-twister-reading
+    phase, collects a single typed recall response, scores each presented
+    word as recalled or not, and appends the results to OUTPUT_CSV_PATH.
+    Returns the list of row dictionaries that were logged.
     """
     word_category_pairs = generate_word_list(LIST_LENGTH)
     _present_word_list(word_category_pairs)
+    _run_interference_phase()
     recalled_words = _collect_recall_response()
     rows = _score_word_list(word_category_pairs, recalled_words)
     _append_rows_to_csv(rows, participant_id, repetition_number)

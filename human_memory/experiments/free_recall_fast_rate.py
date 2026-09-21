@@ -1,8 +1,8 @@
 """
-Free Recall Block - Baseline condition.
+Free Recall Block - Fast Rate condition.
 
-Standard presentation rate, immediate free recall (Experimental_Architecture.md,
-Section 2, condition 1). Presents a 15-word list built by the shared
+Fast presentation rate, immediate free recall (Experimental_Architecture.md,
+Section 2, condition 2). Presents a 15-word list built by the shared
 stimulus-generation function, collects one typed recall response, scores it
 against the presented words, and appends the results to a CSV file.
 """
@@ -18,10 +18,10 @@ from stimulus import generate_word_list
 # Tunable parameters - change these, not the logic below.          #
 # ---------------------------------------------------------------- #
 LIST_LENGTH = 15                # number of words presented per trial
-PRESENTATION_RATE_SEC = 2.0     # seconds each word stays on screen
+PRESENTATION_RATE_SEC = 0.8     # seconds each word stays on screen
 COUNTDOWN_SEC = 3               # countdown shown before presentation starts
 BLANK_LINES_BETWEEN_WORDS = 30  # printed to clear the previous word from view
-OUTPUT_CSV_PATH = Path(__file__).resolve().parent.parent / "data" / "free_recall_baseline.csv"
+OUTPUT_CSV_PATH = Path(__file__).resolve().parent.parent / "data" / "free_recall_fast_rate.csv"
 CSV_FIELDNAMES = ["participant_id", "repetition", "list_position", "word", "category", "recalled"]
 
 
@@ -80,9 +80,9 @@ def _append_rows_to_csv(rows, participant_id, repetition_number):
             )
 
 
-def run_free_recall_baseline(participant_id, repetition_number):
+def run_free_recall_fast_rate(participant_id, repetition_number):
     """
-    Run one Baseline Free Recall trial for a participant.
+    Run one Fast Rate Free Recall trial for a participant.
 
     Generates a LIST_LENGTH-word list, presents it at PRESENTATION_RATE_SEC
     seconds per word, collects a single typed recall response, scores each

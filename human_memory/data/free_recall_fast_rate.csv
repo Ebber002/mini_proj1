@@ -1,0 +1,16 @@
+participant_id,repetition,list_position,word,category,recalled
+1,1,1,squash,vegetables,False
+1,1,2,plum,fruit,False
+1,1,3,coat,clothing,False
+1,1,4,sofa,furniture,False
+1,1,5,pitcher,kitchenware,False
+1,1,6,broccoli,vegetables,True
+1,1,7,hat,clothing,False
+1,1,8,melon,fruit,False
+1,1,9,truck,vehicles,False
+1,1,10,corn,vegetables,False
+1,1,11,deer,animals,False
+1,1,12,kale,vegetables,False
+1,1,13,cow,animals,False
+1,1,14,ferry,vehicles,True
+1,1,15,saw,tools,True
