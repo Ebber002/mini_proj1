@@ -1,0 +1,39 @@
+Serial Recall Block - Pooled Analysis
+========================================
+
+Loaded Letter Baseline: 14 rows
+
+Chunking A: no data available.
+
+Chunking B: no data available.
+
+Articulatory Suppression: no data available.
+
+Tapping Control: no data available.
+
+
+1. Capacity Limit per Condition (mean correct out of 7)
+------------------------------------------------------------
+Letter Baseline: 7.000 (95% CI +/- 0.000, n=1)
+Chunking A: skipped, no data.
+Chunking B: skipped, no data.
+Articulatory Suppression: skipped, no data.
+Tapping Control: skipped, no data.
+
+
+2. Chunking Effect: Chunking A vs Chunking B
+------------------------------------------------------------
+Chunking A: skipped, no data.
+Chunking B: skipped, no data.
+
+
+3. Articulatory Suppression Effect: Articulatory Suppression vs Tapping Control
+------------------------------------------------------------
+Articulatory Suppression: skipped, no data.
+Tapping Control: skipped, no data.
+
+
+4. Error Type Analysis: Letter Baseline vs Articulatory Suppression
+------------------------------------------------------------
+Letter Baseline: phonological=0.143, visual=0.143, other=0.714 (n errors=7)
+Articulatory Suppression: skipped, no data.
