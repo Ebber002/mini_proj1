@@ -2,21 +2,46 @@
 Serial Recall Block - pooled analysis across Letter Baseline, Chunking A,
 Chunking B, Articulatory Suppression, and Tapping Control.
 
-Reads the CSV files produced by the corresponding experiment scripts, pools
-rows across participants directly (Experimental_Architecture.md, Section 6),
-and reports capacity limits, the chunking effect, the articulatory
-suppression effect, and a phonological-vs-visual error type analysis.
-Prints the results, saves them to a summary text file, and saves two PNG
-figures - all under OUTPUT_DIR.
+Reads the per-participant CSV files produced by the corresponding experiment
+scripts (one file per participant per condition, named
+"<stem>_<participant_id>.csv"; Chunking A and B share one file per
+participant, distinguished by their "condition" column), pools rows across
+participants directly (Experimental_Architecture.md, Section 6), and reports
+capacity limits, the chunking effect, the articulatory suppression effect,
+and a phonological-vs-visual error type analysis. Prints the results, saves
+them to a summary text file, and saves two PNG figures - all under
+OUTPUT_DIR.
 
 Run standalone: python analyze_serial_recall.py
 """
 
 import csv
 import math
+import sys
 from pathlib import Path
 
 import matplotlib.pyplot as plt
+
+# So "experiments.*" is importable regardless of the current working
+# directory this script is launched from.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from experiments.serial_recall_articulatory_suppression import (
+    OUTPUT_CSV_DIR as ARTICULATORY_SUPPRESSION_OUTPUT_CSV_DIR,
+    OUTPUT_CSV_STEM as ARTICULATORY_SUPPRESSION_OUTPUT_CSV_STEM,
+)
+from experiments.serial_recall_chunking import (
+    OUTPUT_CSV_DIR as CHUNKING_OUTPUT_CSV_DIR,
+    OUTPUT_CSV_STEM as CHUNKING_OUTPUT_CSV_STEM,
+)
+from experiments.serial_recall_letter_baseline import (
+    OUTPUT_CSV_DIR as LETTER_BASELINE_OUTPUT_CSV_DIR,
+    OUTPUT_CSV_STEM as LETTER_BASELINE_OUTPUT_CSV_STEM,
+)
+from experiments.serial_recall_tapping_control import (
+    OUTPUT_CSV_DIR as TAPPING_CONTROL_OUTPUT_CSV_DIR,
+    OUTPUT_CSV_STEM as TAPPING_CONTROL_OUTPUT_CSV_STEM,
+)
 
 from letter_confusability import PHONOLOGICAL_CONFUSIONS, VISUAL_CONFUSIONS
 
@@ -24,12 +49,6 @@ from letter_confusability import PHONOLOGICAL_CONFUSIONS, VISUAL_CONFUSIONS
 # ---------------------------------------------------------------- #
 # Parameters - change these, not the logic below.                  #
 # ---------------------------------------------------------------- #
-DATA_DIR = Path(__file__).resolve().parent.parent / "data"
-LETTER_BASELINE_CSV_PATH = DATA_DIR / "serial_recall_letter_baseline.csv"
-CHUNKING_CSV_PATH = DATA_DIR / "serial_recall_chunking.csv"
-ARTICULATORY_SUPPRESSION_CSV_PATH = DATA_DIR / "serial_recall_articulatory_suppression.csv"
-TAPPING_CONTROL_CSV_PATH = DATA_DIR / "serial_recall_tapping_control.csv"
-
 OUTPUT_DIR = Path(__file__).resolve().parent / "output" / "serial_recall"
 SUMMARY_PATH = OUTPUT_DIR / "summary.txt"
 
@@ -49,17 +68,32 @@ def _load_csv_dicts(csv_path):
     return rows
 
 
+def _load_condition_rows(output_csv_dir, output_csv_stem):
+    # Glob every per-participant CSV for this condition and concatenate their rows.
+    matching_files = sorted(output_csv_dir.glob(f"{output_csv_stem}_*.csv"))
+    if not matching_files:
+        print(f"WARNING: no files matching {output_csv_stem}_*.csv in {output_csv_dir} - skipping this condition.")
+        return []
+    rows = []
+    for csv_path in matching_files:
+        rows.extend(_load_csv_dicts(csv_path))
+    if not rows:
+        print(f"WARNING: files matching {output_csv_stem}_*.csv in {output_csv_dir} were all empty - skipping this condition.")
+    return rows
+
+
 def _parse_letter_baseline_rows(raw_rows):
     # Normalize the Letter Baseline's own column names to the common shape.
+    # Same column names as Articulatory Suppression / Tapping Control.
     parsed = []
     for row in raw_rows:
         parsed.append(
             {
                 "participant_id": row["participant_id"],
                 "repetition": row["repetition"],
-                "position": int(row["list_position"]),
-                "presented": row["letter"].strip().upper(),
-                "response": row["typed_letter"].strip().upper(),
+                "position": int(row["position"]),
+                "presented": row["presented_letter"].strip().upper(),
+                "response": row["response_letter"].strip().upper(),
                 "correct": row["correct"].strip().lower() == "true",
             }
         )
@@ -166,19 +200,21 @@ def main():
     report("Serial Recall Block - Pooled Analysis")
     report("=" * 40)
 
-    raw_letter_baseline = _load_csv_dicts(LETTER_BASELINE_CSV_PATH)
+    raw_letter_baseline = _load_condition_rows(LETTER_BASELINE_OUTPUT_CSV_DIR, LETTER_BASELINE_OUTPUT_CSV_STEM)
     letter_baseline_rows = _parse_letter_baseline_rows(raw_letter_baseline) if raw_letter_baseline else []
 
-    raw_chunking = _load_csv_dicts(CHUNKING_CSV_PATH)
+    raw_chunking = _load_condition_rows(CHUNKING_OUTPUT_CSV_DIR, CHUNKING_OUTPUT_CSV_STEM)
     chunking_a_rows = _parse_chunking_rows(raw_chunking, "chunking_a") if raw_chunking else []
     chunking_b_rows = _parse_chunking_rows(raw_chunking, "chunking_b") if raw_chunking else []
 
-    raw_articulatory_suppression = _load_csv_dicts(ARTICULATORY_SUPPRESSION_CSV_PATH)
+    raw_articulatory_suppression = _load_condition_rows(
+        ARTICULATORY_SUPPRESSION_OUTPUT_CSV_DIR, ARTICULATORY_SUPPRESSION_OUTPUT_CSV_STEM
+    )
     articulatory_suppression_rows = (
         _parse_position_letter_rows(raw_articulatory_suppression) if raw_articulatory_suppression else []
     )
 
-    raw_tapping_control = _load_csv_dicts(TAPPING_CONTROL_CSV_PATH)
+    raw_tapping_control = _load_condition_rows(TAPPING_CONTROL_OUTPUT_CSV_DIR, TAPPING_CONTROL_OUTPUT_CSV_STEM)
     tapping_control_rows = _parse_position_letter_rows(raw_tapping_control) if raw_tapping_control else []
 
     conditions = [

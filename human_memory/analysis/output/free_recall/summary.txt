@@ -1,91 +1,41 @@
 Free Recall Block - Pooled Analysis
 ========================================
 
-Loaded Baseline: 30 rows from C:\Users\collu\Desktop\AI&HC\Mini project 1\mini_proj1\human_memory\data\free_recall_baseline.csv
+Baseline: no data available (C:\Users\collu\Desktop\AI&HC\Mini project 1\mini_proj1\human_memory\data/free_recall_baseline_*.csv).
 
-Loaded Fast Rate: 15 rows from C:\Users\collu\Desktop\AI&HC\Mini project 1\mini_proj1\human_memory\data\free_recall_fast_rate.csv
+Fast Rate: no data available (C:\Users\collu\Desktop\AI&HC\Mini project 1\mini_proj1\human_memory\data/free_recall_fast_rate_*.csv).
 
-Loaded WM Task: 15 rows from C:\Users\collu\Desktop\AI&HC\Mini project 1\mini_proj1\human_memory\data\free_recall_wm_task.csv
+WM Task: no data available (C:\Users\collu\Desktop\AI&HC\Mini project 1\mini_proj1\human_memory\data/free_recall_wm_task_*.csv).
 
-Pause Control: no data available (C:\Users\collu\Desktop\AI&HC\Mini project 1\mini_proj1\human_memory\data\free_recall_pause_control.csv).
+Pause Control: no data available (C:\Users\collu\Desktop\AI&HC\Mini project 1\mini_proj1\human_memory\data/free_recall_pause_control_*.csv).
 
 
 1. Serial Position Curves (proportion recalled per position)
 ------------------------------------------------------------
-
-Baseline:
-  position  1: 0.000 (95% CI +/- 0.000, n=2)
-  position  2: 0.000 (95% CI +/- 0.000, n=2)
-  position  3: 0.500 (95% CI +/- 0.693, n=2)
-  position  4: 0.000 (95% CI +/- 0.000, n=2)
-  position  5: 0.500 (95% CI +/- 0.693, n=2)
-  position  6: 0.000 (95% CI +/- 0.000, n=2)
-  position  7: 0.500 (95% CI +/- 0.693, n=2)
-  position  8: 0.000 (95% CI +/- 0.000, n=2)
-  position  9: 0.500 (95% CI +/- 0.693, n=2)
-  position 10: 0.000 (95% CI +/- 0.000, n=2)
-  position 11: 0.000 (95% CI +/- 0.000, n=2)
-  position 12: 0.500 (95% CI +/- 0.693, n=2)
-  position 13: 1.000 (95% CI +/- 0.000, n=2)
-  position 14: 0.500 (95% CI +/- 0.693, n=2)
-  position 15: 1.000 (95% CI +/- 0.000, n=2)
-
-Fast Rate:
-  position  1: 0.000 (95% CI +/- 0.000, n=1)
-  position  2: 0.000 (95% CI +/- 0.000, n=1)
-  position  3: 0.000 (95% CI +/- 0.000, n=1)
-  position  4: 0.000 (95% CI +/- 0.000, n=1)
-  position  5: 0.000 (95% CI +/- 0.000, n=1)
-  position  6: 1.000 (95% CI +/- 0.000, n=1)
-  position  7: 0.000 (95% CI +/- 0.000, n=1)
-  position  8: 0.000 (95% CI +/- 0.000, n=1)
-  position  9: 0.000 (95% CI +/- 0.000, n=1)
-  position 10: 0.000 (95% CI +/- 0.000, n=1)
-  position 11: 0.000 (95% CI +/- 0.000, n=1)
-  position 12: 0.000 (95% CI +/- 0.000, n=1)
-  position 13: 0.000 (95% CI +/- 0.000, n=1)
-  position 14: 1.000 (95% CI +/- 0.000, n=1)
-  position 15: 1.000 (95% CI +/- 0.000, n=1)
-
-WM Task:
-  position  1: 0.000 (95% CI +/- 0.000, n=1)
-  position  2: 0.000 (95% CI +/- 0.000, n=1)
-  position  3: 0.000 (95% CI +/- 0.000, n=1)
-  position  4: 0.000 (95% CI +/- 0.000, n=1)
-  position  5: 0.000 (95% CI +/- 0.000, n=1)
-  position  6: 0.000 (95% CI +/- 0.000, n=1)
-  position  7: 0.000 (95% CI +/- 0.000, n=1)
-  position  8: 1.000 (95% CI +/- 0.000, n=1)
-  position  9: 1.000 (95% CI +/- 0.000, n=1)
-  position 10: 0.000 (95% CI +/- 0.000, n=1)
-  position 11: 1.000 (95% CI +/- 0.000, n=1)
-  position 12: 0.000 (95% CI +/- 0.000, n=1)
-  position 13: 0.000 (95% CI +/- 0.000, n=1)
-  position 14: 0.000 (95% CI +/- 0.000, n=1)
-  position 15: 0.000 (95% CI +/- 0.000, n=1)
+Baseline: skipped, no data.
+Fast Rate: skipped, no data.
+WM Task: skipped, no data.
 Pause Control: skipped, no data.
 
 
 2. Primacy Baseline (Baseline condition only)
 ------------------------------------------------------------
-Positions 1-3:  0.167 (95% CI +/- 0.298, n=6)
-Positions 7-9:  0.333 (95% CI +/- 0.377, n=6)
+Skipped: no Baseline data available.
 
 
 3. Recency Baseline (Baseline condition only)
 ------------------------------------------------------------
-Positions 13-15: 0.833 (95% CI +/- 0.298, n=6)
-Positions 7-9:   0.333 (95% CI +/- 0.377, n=6)
+Skipped: no Baseline data available.
 
 
 4. Primacy Comparison: Fast Rate vs Baseline (positions 1-3)
 ------------------------------------------------------------
-Baseline: 0.167 (95% CI +/- 0.298, n=6)
-Fast Rate: 0.000 (95% CI +/- 0.000, n=3)
+Baseline: skipped, no data.
+Fast Rate: skipped, no data.
 
 
 5. Recency Comparison: WM Task vs Baseline vs Pause Control (positions 13-15)
 ------------------------------------------------------------
-Baseline: 0.833 (95% CI +/- 0.298, n=6)
-WM Task: 0.000 (95% CI +/- 0.000, n=3)
+Baseline: skipped, no data.
+WM Task: skipped, no data.
 Pause Control: skipped, no data.

@@ -1,44 +1,63 @@
 """
 Free Recall Block - pooled analysis across the four conditions.
 
-Reads the CSV files produced by the Baseline, Fast Rate, WM Task, and Pause
-Control experiment scripts, pools all rows across participants and
-repetitions directly (Experimental_Architecture.md, Section 6), and reports
-the serial position curve, primacy/recency baselines, and the two condition
-comparisons the assignment asks for. Prints the results, saves them to a
-summary text file, and saves three PNG figures - all under OUTPUT_DIR.
+Reads the per-participant CSV files produced by the Baseline, Fast Rate, WM
+Task, and Pause Control experiment scripts (one file per participant per
+condition, named "<stem>_<participant_id>.csv"), pools all rows across
+participants and repetitions directly (Experimental_Architecture.md,
+Section 6), and reports the serial position curve, primacy/recency
+baselines, and the two condition comparisons the assignment asks for.
+Prints the results, saves them to a summary text file, and saves three PNG
+figures - all under OUTPUT_DIR.
 
 Run standalone: python analyze_free_recall.py
 """
 
 import csv
 import math
+import sys
 from pathlib import Path
 
 import matplotlib.pyplot as plt
+
+# So "experiments.*" is importable regardless of the current working
+# directory this script is launched from.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from experiments.free_recall_baseline import (
+    OUTPUT_CSV_DIR as BASELINE_OUTPUT_CSV_DIR,
+    OUTPUT_CSV_STEM as BASELINE_OUTPUT_CSV_STEM,
+)
+from experiments.free_recall_fast_rate import (
+    OUTPUT_CSV_DIR as FAST_RATE_OUTPUT_CSV_DIR,
+    OUTPUT_CSV_STEM as FAST_RATE_OUTPUT_CSV_STEM,
+)
+from experiments.free_recall_pause_control import (
+    OUTPUT_CSV_DIR as PAUSE_CONTROL_OUTPUT_CSV_DIR,
+    OUTPUT_CSV_STEM as PAUSE_CONTROL_OUTPUT_CSV_STEM,
+)
+from experiments.free_recall_wm_task import (
+    OUTPUT_CSV_DIR as WM_TASK_OUTPUT_CSV_DIR,
+    OUTPUT_CSV_STEM as WM_TASK_OUTPUT_CSV_STEM,
+)
 
 
 # ---------------------------------------------------------------- #
 # Parameters - change these, not the logic below.                  #
 # ---------------------------------------------------------------- #
-DATA_DIR = Path(__file__).resolve().parent.parent / "data"
-BASELINE_CSV_PATH = DATA_DIR / "free_recall_baseline.csv"
-FAST_RATE_CSV_PATH = DATA_DIR / "free_recall_fast_rate.csv"
-WM_TASK_CSV_PATH = DATA_DIR / "free_recall_wm_task.csv"
-PAUSE_CONTROL_CSV_PATH = DATA_DIR / "free_recall_pause_control.csv"
-
 OUTPUT_DIR = Path(__file__).resolve().parent / "output" / "free_recall"
 SUMMARY_PATH = OUTPUT_DIR / "summary.txt"
 
 LIST_LENGTH = 15   # positions 1..15, matches every Free Recall script's LIST_LENGTH
 CI_Z = 1.96        # 95% CI via normal approximation to a proportion
 
-# (condition key, display label, CSV path), in the order they should be reported.
+# (condition key, display label, per-participant CSV dir, CSV stem), in the
+# order they should be reported.
 CONDITIONS = [
-    ("baseline", "Baseline", BASELINE_CSV_PATH),
-    ("fast_rate", "Fast Rate", FAST_RATE_CSV_PATH),
-    ("wm_task", "WM Task", WM_TASK_CSV_PATH),
-    ("pause_control", "Pause Control", PAUSE_CONTROL_CSV_PATH),
+    ("baseline", "Baseline", BASELINE_OUTPUT_CSV_DIR, BASELINE_OUTPUT_CSV_STEM),
+    ("fast_rate", "Fast Rate", FAST_RATE_OUTPUT_CSV_DIR, FAST_RATE_OUTPUT_CSV_STEM),
+    ("wm_task", "WM Task", WM_TASK_OUTPUT_CSV_DIR, WM_TASK_OUTPUT_CSV_STEM),
+    ("pause_control", "Pause Control", PAUSE_CONTROL_OUTPUT_CSV_DIR, PAUSE_CONTROL_OUTPUT_CSV_STEM),
 ]
 
 PRIMACY_POSITIONS = (1, 2, 3)
@@ -55,6 +74,20 @@ def _load_csv_dicts(csv_path):
         rows = list(csv.DictReader(csv_file))
     if not rows:
         print(f"WARNING: {csv_path} is empty - skipping this condition.")
+    return rows
+
+
+def _load_condition_rows(output_csv_dir, output_csv_stem):
+    # Glob every per-participant CSV for this condition and concatenate their rows.
+    matching_files = sorted(output_csv_dir.glob(f"{output_csv_stem}_*.csv"))
+    if not matching_files:
+        print(f"WARNING: no files matching {output_csv_stem}_*.csv in {output_csv_dir} - skipping this condition.")
+        return []
+    rows = []
+    for csv_path in matching_files:
+        rows.extend(_load_csv_dicts(csv_path))
+    if not rows:
+        print(f"WARNING: files matching {output_csv_stem}_*.csv in {output_csv_dir} were all empty - skipping this condition.")
     return rows
 
 
@@ -115,20 +148,20 @@ def main():
 
     data_by_condition = {}
     curve_by_condition = {}
-    for key, label, csv_path in CONDITIONS:
-        raw_rows = _load_csv_dicts(csv_path)
+    for key, label, output_csv_dir, output_csv_stem in CONDITIONS:
+        raw_rows = _load_condition_rows(output_csv_dir, output_csv_stem)
         rows = _parse_free_recall_rows(raw_rows) if raw_rows else []
         data_by_condition[key] = rows
         if rows:
             curve_by_condition[key] = _serial_position_curve(rows)
-            report(f"\nLoaded {label}: {len(rows)} rows from {csv_path}")
+            report(f"\nLoaded {label}: {len(rows)} rows from {output_csv_dir}/{output_csv_stem}_*.csv")
         else:
-            report(f"\n{label}: no data available ({csv_path}).")
+            report(f"\n{label}: no data available ({output_csv_dir}/{output_csv_stem}_*.csv).")
 
     # --- 1. Serial position curve per condition ---
     report("\n\n1. Serial Position Curves (proportion recalled per position)")
     report("-" * 60)
-    for key, label, _ in CONDITIONS:
+    for key, label, _, _ in CONDITIONS:
         curve = curve_by_condition.get(key)
         if curve is None:
             report(f"{label}: skipped, no data.")
@@ -192,7 +225,7 @@ def main():
     # --- Figure 1: serial position curves overlaid ---
     if curve_by_condition:
         fig, ax = plt.subplots(figsize=(8, 5))
-        for key, label, _ in CONDITIONS:
+        for key, label, _, _ in CONDITIONS:
             curve = curve_by_condition.get(key)
             if curve is None:
                 continue
