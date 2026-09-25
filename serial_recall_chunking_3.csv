@@ -1,0 +1,15 @@
+participant_id,repetition,condition,position,presented_word,response_word,correct
+3,1,chunking_a,1,trombone,trombone,True
+3,1,chunking_a,2,skiing,ukulele,False
+3,1,chunking_a,3,harmonica,,False
+3,1,chunking_a,4,shoulder,,False
+3,1,chunking_a,5,ukulele,,False
+3,1,chunking_a,6,deer,,False
+3,1,chunking_a,7,ladder,,False
+3,1,chunking_b,1,motorcycle,motorcycle,True
+3,1,chunking_b,2,bike,bike,True
+3,1,chunking_b,3,canoe,bus,False
+3,1,chunking_b,4,tractor,canoe,False
+3,1,chunking_b,5,plane,tractor,False
+3,1,chunking_b,6,bus,,False
+3,1,chunking_b,7,taxi,,False

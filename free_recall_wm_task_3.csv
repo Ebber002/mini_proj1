@@ -1,0 +1,16 @@
+participant_id,repetition,list_position,word,category,recalled
+3,1,1,sheep,animals,False
+3,1,2,sunshine,weather,False
+3,1,3,church,buildings,False
+3,1,4,goat,animals,False
+3,1,5,scooter,vehicles,True
+3,1,6,painter,professions,False
+3,1,7,mouse,animals,True
+3,1,8,goose,birds,True
+3,1,9,blueberry,fruits,False
+3,1,10,violin,musical_instruments,False
+3,1,11,tower,buildings,False
+3,1,12,mechanic,professions,False
+3,1,13,shirt,clothing,False
+3,1,14,garage,buildings,False
+3,1,15,jacket,clothing,False

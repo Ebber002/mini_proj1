@@ -1,0 +1,16 @@
+participant_id,repetition,list_position,word,category,recalled
+3,1,1,plane,vehicles,False
+3,1,2,actor,professions,False
+3,1,3,cushion,furniture,False
+3,1,4,wine,drinks,False
+3,1,5,drought,weather,False
+3,1,6,hospital,buildings,False
+3,1,7,sofa,furniture,True
+3,1,8,goat,animals,True
+3,1,9,librarian,professions,False
+3,1,10,boat,vehicles,False
+3,1,11,bookcase,furniture,False
+3,1,12,clarinet,musical_instruments,False
+3,1,13,skiing,sports,True
+3,1,14,pilot,professions,False
+3,1,15,sunshine,weather,False

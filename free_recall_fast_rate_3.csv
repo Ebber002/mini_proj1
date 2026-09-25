@@ -1,0 +1,16 @@
+participant_id,repetition,list_position,word,category,recalled
+3,1,1,juice,drinks,False
+3,1,2,singer,professions,False
+3,1,3,rowing,sports,False
+3,1,4,cabinet,furniture,False
+3,1,5,tiger,animals,False
+3,1,6,ferry,vehicles,True
+3,1,7,ladder,tools,False
+3,1,8,smoothie,drinks,False
+3,1,9,snow,weather,False
+3,1,10,hammer,tools,False
+3,1,11,sailor,professions,False
+3,1,12,thumb,body_parts,False
+3,1,13,deer,animals,True
+3,1,14,rake,tools,True
+3,1,15,baseball,sports,True
