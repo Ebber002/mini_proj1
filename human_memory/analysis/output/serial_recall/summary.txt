@@ -1,41 +1,41 @@
 Serial Recall Block - Pooled Analysis
 ========================================
 
-Loaded Letter Baseline: 21 rows
+Loaded Letter Baseline: 112 rows
 
-Loaded Chunking A: 21 rows
+Loaded Chunking A: 112 rows
 
-Loaded Chunking B: 21 rows
+Loaded Chunking B: 112 rows
 
-Loaded Articulatory Suppression: 21 rows
+Loaded Articulatory Suppression: 112 rows
 
-Loaded Tapping Control: 21 rows
+Loaded Tapping Control: 112 rows
 
 
 1. Capacity Limit per Condition (mean correct out of 7)
 ------------------------------------------------------------
-Letter Baseline: 5.000 (95% CI +/- 1.960, n=3)
-Chunking A: 3.000 (95% CI +/- 1.960, n=3)
-Chunking B: 3.000 (95% CI +/- 1.132, n=3)
-Articulatory Suppression: 1.333 (95% CI +/- 0.653, n=3)
-Tapping Control: 1.667 (95% CI +/- 1.729, n=3)
+Letter Baseline: 5.062 (95% CI +/- 0.681, n=16)
+Chunking A: 2.562 (95% CI +/- 0.857, n=16)
+Chunking B: 4.000 (95% CI +/- 0.839, n=16)
+Articulatory Suppression: 2.250 (95% CI +/- 0.727, n=16)
+Tapping Control: 4.125 (95% CI +/- 1.041, n=16)
 
 
 2. Chunking Effect: Chunking A vs Chunking B
 ------------------------------------------------------------
-Chunking A: 3.000 (95% CI +/- 1.960, n=3)
-Chunking B: 3.000 (95% CI +/- 1.132, n=3)
-Chunking effect (Chunking B - Chunking A): +0.000 (95% CI +/- 2.263)
+Chunking A: 2.562 (95% CI +/- 0.857, n=16)
+Chunking B: 4.000 (95% CI +/- 0.839, n=16)
+Chunking effect (Chunking B - Chunking A): +1.438 (95% CI +/- 1.200)
 
 
 3. Articulatory Suppression Effect: Articulatory Suppression vs Tapping Control
 ------------------------------------------------------------
-Articulatory Suppression: 1.333 (95% CI +/- 0.653, n=3)
-Tapping Control: 1.667 (95% CI +/- 1.729, n=3)
-Suppression cost (Tapping Control - Articulatory Suppression): +0.333 (95% CI +/- 1.848)
+Articulatory Suppression: 2.250 (95% CI +/- 0.727, n=16)
+Tapping Control: 4.125 (95% CI +/- 1.041, n=16)
+Suppression cost (Tapping Control - Articulatory Suppression): +1.875 (95% CI +/- 1.270)
 
 
 4. Error Type Analysis: Letter Baseline vs Articulatory Suppression
 ------------------------------------------------------------
-Letter Baseline: phonological=0.167, visual=0.000, other=0.833 (n errors=6)
-Articulatory Suppression: phonological=0.188, visual=0.125, other=0.688 (n errors=16)
+Letter Baseline: phonological=0.286, visual=0.143, other=0.571 (n errors=28)
+Articulatory Suppression: phonological=0.224, visual=0.104, other=0.672 (n errors=67)

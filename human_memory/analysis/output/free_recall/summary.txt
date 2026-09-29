@@ -1,110 +1,110 @@
 Free Recall Block - Pooled Analysis
 ========================================
 
-Loaded Baseline: 45 rows from C:\Users\collu\Desktop\AI&HC\Mini project 1\mini_proj1\human_memory\data/free_recall_baseline_*.csv
+Loaded Baseline: 270 rows from C:\Users\collu\Desktop\AI&HC\Mini project 1\mini_proj1\human_memory\data/free_recall_baseline_*.csv
 
-Loaded Fast Rate: 45 rows from C:\Users\collu\Desktop\AI&HC\Mini project 1\mini_proj1\human_memory\data/free_recall_fast_rate_*.csv
+Loaded Fast Rate: 240 rows from C:\Users\collu\Desktop\AI&HC\Mini project 1\mini_proj1\human_memory\data/free_recall_fast_rate_*.csv
 
-Loaded WM Task: 45 rows from C:\Users\collu\Desktop\AI&HC\Mini project 1\mini_proj1\human_memory\data/free_recall_wm_task_*.csv
+Loaded WM Task: 240 rows from C:\Users\collu\Desktop\AI&HC\Mini project 1\mini_proj1\human_memory\data/free_recall_wm_task_*.csv
 
-Loaded Pause Control: 45 rows from C:\Users\collu\Desktop\AI&HC\Mini project 1\mini_proj1\human_memory\data/free_recall_pause_control_*.csv
+Loaded Pause Control: 240 rows from C:\Users\collu\Desktop\AI&HC\Mini project 1\mini_proj1\human_memory\data/free_recall_pause_control_*.csv
 
 
 1. Serial Position Curves (proportion recalled per position)
 ------------------------------------------------------------
 
 Baseline:
-  position  1: 1.000 (95% CI +/- 0.000, n=3)
-  position  2: 0.667 (95% CI +/- 0.533, n=3)
-  position  3: 0.333 (95% CI +/- 0.533, n=3)
-  position  4: 0.000 (95% CI +/- 0.000, n=3)
-  position  5: 0.000 (95% CI +/- 0.000, n=3)
-  position  6: 0.000 (95% CI +/- 0.000, n=3)
-  position  7: 0.000 (95% CI +/- 0.000, n=3)
-  position  8: 0.000 (95% CI +/- 0.000, n=3)
-  position  9: 0.667 (95% CI +/- 0.533, n=3)
-  position 10: 0.333 (95% CI +/- 0.533, n=3)
-  position 11: 0.333 (95% CI +/- 0.533, n=3)
-  position 12: 0.333 (95% CI +/- 0.533, n=3)
-  position 13: 0.333 (95% CI +/- 0.533, n=3)
-  position 14: 0.667 (95% CI +/- 0.533, n=3)
-  position 15: 0.667 (95% CI +/- 0.533, n=3)
+  position  1: 0.722 (95% CI +/- 0.207, n=18)
+  position  2: 0.333 (95% CI +/- 0.218, n=18)
+  position  3: 0.222 (95% CI +/- 0.192, n=18)
+  position  4: 0.167 (95% CI +/- 0.172, n=18)
+  position  5: 0.056 (95% CI +/- 0.106, n=18)
+  position  6: 0.278 (95% CI +/- 0.207, n=18)
+  position  7: 0.167 (95% CI +/- 0.172, n=18)
+  position  8: 0.167 (95% CI +/- 0.172, n=18)
+  position  9: 0.389 (95% CI +/- 0.225, n=18)
+  position 10: 0.333 (95% CI +/- 0.218, n=18)
+  position 11: 0.389 (95% CI +/- 0.225, n=18)
+  position 12: 0.278 (95% CI +/- 0.207, n=18)
+  position 13: 0.667 (95% CI +/- 0.218, n=18)
+  position 14: 0.556 (95% CI +/- 0.230, n=18)
+  position 15: 0.722 (95% CI +/- 0.207, n=18)
 
 Fast Rate:
-  position  1: 1.000 (95% CI +/- 0.000, n=3)
-  position  2: 0.333 (95% CI +/- 0.533, n=3)
-  position  3: 0.000 (95% CI +/- 0.000, n=3)
-  position  4: 0.000 (95% CI +/- 0.000, n=3)
-  position  5: 0.000 (95% CI +/- 0.000, n=3)
-  position  6: 0.000 (95% CI +/- 0.000, n=3)
-  position  7: 0.333 (95% CI +/- 0.533, n=3)
-  position  8: 0.000 (95% CI +/- 0.000, n=3)
-  position  9: 0.000 (95% CI +/- 0.000, n=3)
-  position 10: 0.333 (95% CI +/- 0.533, n=3)
-  position 11: 0.000 (95% CI +/- 0.000, n=3)
-  position 12: 0.000 (95% CI +/- 0.000, n=3)
-  position 13: 0.333 (95% CI +/- 0.533, n=3)
-  position 14: 1.000 (95% CI +/- 0.000, n=3)
-  position 15: 1.000 (95% CI +/- 0.000, n=3)
+  position  1: 0.688 (95% CI +/- 0.227, n=16)
+  position  2: 0.500 (95% CI +/- 0.245, n=16)
+  position  3: 0.375 (95% CI +/- 0.237, n=16)
+  position  4: 0.125 (95% CI +/- 0.162, n=16)
+  position  5: 0.125 (95% CI +/- 0.162, n=16)
+  position  6: 0.312 (95% CI +/- 0.227, n=16)
+  position  7: 0.188 (95% CI +/- 0.191, n=16)
+  position  8: 0.188 (95% CI +/- 0.191, n=16)
+  position  9: 0.062 (95% CI +/- 0.119, n=16)
+  position 10: 0.312 (95% CI +/- 0.227, n=16)
+  position 11: 0.062 (95% CI +/- 0.119, n=16)
+  position 12: 0.375 (95% CI +/- 0.237, n=16)
+  position 13: 0.625 (95% CI +/- 0.237, n=16)
+  position 14: 0.562 (95% CI +/- 0.243, n=16)
+  position 15: 0.812 (95% CI +/- 0.191, n=16)
 
 WM Task:
-  position  1: 0.667 (95% CI +/- 0.533, n=3)
-  position  2: 0.333 (95% CI +/- 0.533, n=3)
-  position  3: 0.333 (95% CI +/- 0.533, n=3)
-  position  4: 0.333 (95% CI +/- 0.533, n=3)
-  position  5: 0.000 (95% CI +/- 0.000, n=3)
-  position  6: 0.000 (95% CI +/- 0.000, n=3)
-  position  7: 0.333 (95% CI +/- 0.533, n=3)
-  position  8: 0.000 (95% CI +/- 0.000, n=3)
-  position  9: 0.333 (95% CI +/- 0.533, n=3)
-  position 10: 0.000 (95% CI +/- 0.000, n=3)
-  position 11: 0.000 (95% CI +/- 0.000, n=3)
-  position 12: 0.000 (95% CI +/- 0.000, n=3)
-  position 13: 0.333 (95% CI +/- 0.533, n=3)
-  position 14: 0.000 (95% CI +/- 0.000, n=3)
-  position 15: 0.000 (95% CI +/- 0.000, n=3)
+  position  1: 0.500 (95% CI +/- 0.245, n=16)
+  position  2: 0.375 (95% CI +/- 0.237, n=16)
+  position  3: 0.250 (95% CI +/- 0.212, n=16)
+  position  4: 0.188 (95% CI +/- 0.191, n=16)
+  position  5: 0.062 (95% CI +/- 0.119, n=16)
+  position  6: 0.250 (95% CI +/- 0.212, n=16)
+  position  7: 0.250 (95% CI +/- 0.212, n=16)
+  position  8: 0.188 (95% CI +/- 0.191, n=16)
+  position  9: 0.312 (95% CI +/- 0.227, n=16)
+  position 10: 0.062 (95% CI +/- 0.119, n=16)
+  position 11: 0.250 (95% CI +/- 0.212, n=16)
+  position 12: 0.062 (95% CI +/- 0.119, n=16)
+  position 13: 0.375 (95% CI +/- 0.237, n=16)
+  position 14: 0.062 (95% CI +/- 0.119, n=16)
+  position 15: 0.062 (95% CI +/- 0.119, n=16)
 
 Pause Control:
-  position  1: 0.333 (95% CI +/- 0.533, n=3)
-  position  2: 0.000 (95% CI +/- 0.000, n=3)
-  position  3: 0.000 (95% CI +/- 0.000, n=3)
-  position  4: 0.000 (95% CI +/- 0.000, n=3)
-  position  5: 0.000 (95% CI +/- 0.000, n=3)
-  position  6: 0.000 (95% CI +/- 0.000, n=3)
-  position  7: 0.000 (95% CI +/- 0.000, n=3)
-  position  8: 0.000 (95% CI +/- 0.000, n=3)
-  position  9: 0.333 (95% CI +/- 0.533, n=3)
-  position 10: 0.000 (95% CI +/- 0.000, n=3)
-  position 11: 0.000 (95% CI +/- 0.000, n=3)
-  position 12: 0.000 (95% CI +/- 0.000, n=3)
-  position 13: 0.667 (95% CI +/- 0.533, n=3)
-  position 14: 0.667 (95% CI +/- 0.533, n=3)
-  position 15: 1.000 (95% CI +/- 0.000, n=3)
+  position  1: 0.500 (95% CI +/- 0.245, n=16)
+  position  2: 0.438 (95% CI +/- 0.243, n=16)
+  position  3: 0.250 (95% CI +/- 0.212, n=16)
+  position  4: 0.375 (95% CI +/- 0.237, n=16)
+  position  5: 0.125 (95% CI +/- 0.162, n=16)
+  position  6: 0.125 (95% CI +/- 0.162, n=16)
+  position  7: 0.188 (95% CI +/- 0.191, n=16)
+  position  8: 0.375 (95% CI +/- 0.237, n=16)
+  position  9: 0.188 (95% CI +/- 0.191, n=16)
+  position 10: 0.188 (95% CI +/- 0.191, n=16)
+  position 11: 0.250 (95% CI +/- 0.212, n=16)
+  position 12: 0.188 (95% CI +/- 0.191, n=16)
+  position 13: 0.438 (95% CI +/- 0.243, n=16)
+  position 14: 0.500 (95% CI +/- 0.245, n=16)
+  position 15: 0.625 (95% CI +/- 0.237, n=16)
 
 
 2. Primacy Baseline (Baseline condition only)
 ------------------------------------------------------------
-Positions 1-3:  0.667 (95% CI +/- 0.308, n=9)
-Positions 7-9:  0.222 (95% CI +/- 0.272, n=9)
+Positions 1-3:  0.426 (95% CI +/- 0.132, n=54)
+Positions 7-9:  0.241 (95% CI +/- 0.114, n=54)
 
 
 3. Recency Baseline (Baseline condition only)
 ------------------------------------------------------------
-Positions 13-15: 0.556 (95% CI +/- 0.325, n=9)
-Positions 7-9:   0.222 (95% CI +/- 0.272, n=9)
+Positions 13-15: 0.648 (95% CI +/- 0.127, n=54)
+Positions 7-9:   0.241 (95% CI +/- 0.114, n=54)
 
 
 4. Primacy Comparison: Fast Rate vs Baseline (positions 1-3)
 ------------------------------------------------------------
-Baseline: 0.667 (95% CI +/- 0.308, n=9)
-Fast Rate: 0.444 (95% CI +/- 0.325, n=9)
-Rate effect on primacy (Baseline - Fast Rate): +0.222 (95% CI +/- 0.447)
+Baseline: 0.426 (95% CI +/- 0.132, n=54)
+Fast Rate: 0.521 (95% CI +/- 0.141, n=48)
+Rate effect on primacy (Baseline - Fast Rate): -0.095 (95% CI +/- 0.193)
 
 
 5. Recency Comparison: WM Task vs Baseline vs Pause Control (positions 13-15)
 ------------------------------------------------------------
-Baseline: 0.556 (95% CI +/- 0.325, n=9)
-WM Task: 0.111 (95% CI +/- 0.205, n=9)
-Pause Control: 0.778 (95% CI +/- 0.272, n=9)
-WM task effect on recency (Baseline - WM Task): +0.444 (95% CI +/- 0.384)
-Interference vs. mere delay (Pause Control - WM Task): +0.667 (95% CI +/- 0.340)
+Baseline: 0.648 (95% CI +/- 0.127, n=54)
+WM Task: 0.167 (95% CI +/- 0.105, n=48)
+Pause Control: 0.521 (95% CI +/- 0.141, n=48)
+WM task effect on recency (Baseline - WM Task): +0.481 (95% CI +/- 0.165)
+Interference vs. mere delay (Pause Control - WM Task): +0.354 (95% CI +/- 0.176)
