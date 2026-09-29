@@ -1,39 +1,41 @@
 Serial Recall Block - Pooled Analysis
 ========================================
 
-Letter Baseline: no data available.
+Loaded Letter Baseline: 21 rows
 
-Chunking A: no data available.
+Loaded Chunking A: 21 rows
 
-Chunking B: no data available.
+Loaded Chunking B: 21 rows
 
-Articulatory Suppression: no data available.
+Loaded Articulatory Suppression: 21 rows
 
-Tapping Control: no data available.
+Loaded Tapping Control: 21 rows
 
 
 1. Capacity Limit per Condition (mean correct out of 7)
 ------------------------------------------------------------
-Letter Baseline: skipped, no data.
-Chunking A: skipped, no data.
-Chunking B: skipped, no data.
-Articulatory Suppression: skipped, no data.
-Tapping Control: skipped, no data.
+Letter Baseline: 5.000 (95% CI +/- 1.960, n=3)
+Chunking A: 3.000 (95% CI +/- 1.960, n=3)
+Chunking B: 3.000 (95% CI +/- 1.132, n=3)
+Articulatory Suppression: 1.333 (95% CI +/- 0.653, n=3)
+Tapping Control: 1.667 (95% CI +/- 1.729, n=3)
 
 
 2. Chunking Effect: Chunking A vs Chunking B
 ------------------------------------------------------------
-Chunking A: skipped, no data.
-Chunking B: skipped, no data.
+Chunking A: 3.000 (95% CI +/- 1.960, n=3)
+Chunking B: 3.000 (95% CI +/- 1.132, n=3)
+Chunking effect (Chunking B - Chunking A): +0.000 (95% CI +/- 2.263)
 
 
 3. Articulatory Suppression Effect: Articulatory Suppression vs Tapping Control
 ------------------------------------------------------------
-Articulatory Suppression: skipped, no data.
-Tapping Control: skipped, no data.
+Articulatory Suppression: 1.333 (95% CI +/- 0.653, n=3)
+Tapping Control: 1.667 (95% CI +/- 1.729, n=3)
+Suppression cost (Tapping Control - Articulatory Suppression): +0.333 (95% CI +/- 1.848)
 
 
 4. Error Type Analysis: Letter Baseline vs Articulatory Suppression
 ------------------------------------------------------------
-Letter Baseline: skipped, no data.
-Articulatory Suppression: skipped, no data.
+Letter Baseline: phonological=0.167, visual=0.000, other=0.833 (n errors=6)
+Articulatory Suppression: phonological=0.188, visual=0.125, other=0.688 (n errors=16)

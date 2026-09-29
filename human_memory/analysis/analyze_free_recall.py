@@ -135,6 +135,18 @@ def _format_stat(p, margin, n):
     return f"{p:.3f} (95% CI +/- {margin:.3f}, n={n})"
 
 
+def _difference_ci(p_a, margin_a, p_b, margin_b):
+    # 95% CI for the difference of two independent proportions, combining
+    # their margins in quadrature (valid since both share the same CI_Z).
+    diff = p_a - p_b
+    margin = math.sqrt(margin_a ** 2 + margin_b ** 2)
+    return diff, margin
+
+
+def _format_diff(diff, margin):
+    return f"{diff:+.3f} (95% CI +/- {margin:.3f})"
+
+
 def main():
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     report_lines = []
@@ -205,6 +217,11 @@ def main():
             report(f"{label}: {_format_stat(p, margin, n)}")
         else:
             report(f"{label}: skipped, no data.")
+    if "baseline" in primacy_comparison and "fast_rate" in primacy_comparison:
+        p_base, margin_base, _ = primacy_comparison["baseline"]
+        p_fast, margin_fast, _ = primacy_comparison["fast_rate"]
+        diff, diff_margin = _difference_ci(p_base, margin_base, p_fast, margin_fast)
+        report(f"Rate effect on primacy (Baseline - Fast Rate): {_format_diff(diff, diff_margin)}")
 
     # --- 5. Recency comparison: WM Task vs Baseline and Pause Control ---
     report("\n\n5. Recency Comparison: WM Task vs Baseline vs Pause Control (positions 13-15)")
@@ -218,6 +235,16 @@ def main():
             report(f"{label}: {_format_stat(p, margin, n)}")
         else:
             report(f"{label}: skipped, no data.")
+    if "baseline" in recency_comparison and "wm_task" in recency_comparison:
+        p_base, margin_base, _ = recency_comparison["baseline"]
+        p_wm, margin_wm, _ = recency_comparison["wm_task"]
+        diff, diff_margin = _difference_ci(p_base, margin_base, p_wm, margin_wm)
+        report(f"WM task effect on recency (Baseline - WM Task): {_format_diff(diff, diff_margin)}")
+    if "pause_control" in recency_comparison and "wm_task" in recency_comparison:
+        p_pause, margin_pause, _ = recency_comparison["pause_control"]
+        p_wm, margin_wm, _ = recency_comparison["wm_task"]
+        diff, diff_margin = _difference_ci(p_pause, margin_pause, p_wm, margin_wm)
+        report(f"Interference vs. mere delay (Pause Control - WM Task): {_format_diff(diff, diff_margin)}")
 
     SUMMARY_PATH.write_text("\n".join(report_lines) + "\n", encoding="utf-8")
     print(f"\nSummary written to: {SUMMARY_PATH}")
