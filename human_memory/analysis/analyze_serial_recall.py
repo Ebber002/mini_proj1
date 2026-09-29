@@ -128,8 +128,8 @@ def _parse_chunking_rows(raw_rows, condition_value):
                 "participant_id": row["participant_id"],
                 "repetition": row["repetition"],
                 "position": int(row["position"]),
-                "presented": row["presented_item"],
-                "response": row["response_item"],
+                "presented": row["presented_word"],
+                "response": row["response_word"],
                 "correct": row["correct"].strip().lower() == "true",
             }
         )
@@ -187,6 +187,18 @@ def _error_type_proportions(rows):
 
 def _format_stat(mean, margin, n):
     return f"{mean:.3f} (95% CI +/- {margin:.3f}, n={n})"
+
+
+def _difference_ci(mean_a, margin_a, mean_b, margin_b):
+    # 95% CI for the difference of two independent means, combining their
+    # margins in quadrature (valid since both share the same CI_Z).
+    diff = mean_a - mean_b
+    margin = math.sqrt(margin_a ** 2 + margin_b ** 2)
+    return diff, margin
+
+
+def _format_diff(diff, margin):
+    return f"{diff:+.3f} (95% CI +/- {margin:.3f})"
 
 
 def main():
@@ -252,6 +264,11 @@ def main():
             report(f"{label}: {_format_stat(*capacity_stats[key])}")
         else:
             report(f"{label}: skipped, no data.")
+    if "chunking_a" in capacity_stats and "chunking_b" in capacity_stats:
+        mean_a, margin_a, _ = capacity_stats["chunking_a"]
+        mean_b, margin_b, _ = capacity_stats["chunking_b"]
+        diff, diff_margin = _difference_ci(mean_b, margin_b, mean_a, margin_a)
+        report(f"Chunking effect (Chunking B - Chunking A): {_format_diff(diff, diff_margin)}")
 
     # --- 3. Articulatory suppression effect ---
     report("\n\n3. Articulatory Suppression Effect: Articulatory Suppression vs Tapping Control")
@@ -261,6 +278,11 @@ def main():
             report(f"{label}: {_format_stat(*capacity_stats[key])}")
         else:
             report(f"{label}: skipped, no data.")
+    if "articulatory_suppression" in capacity_stats and "tapping_control" in capacity_stats:
+        mean_as, margin_as, _ = capacity_stats["articulatory_suppression"]
+        mean_tc, margin_tc, _ = capacity_stats["tapping_control"]
+        diff, diff_margin = _difference_ci(mean_tc, margin_tc, mean_as, margin_as)
+        report(f"Suppression cost (Tapping Control - Articulatory Suppression): {_format_diff(diff, diff_margin)}")
 
     # --- 4. Error type analysis ---
     report("\n\n4. Error Type Analysis: Letter Baseline vs Articulatory Suppression")
