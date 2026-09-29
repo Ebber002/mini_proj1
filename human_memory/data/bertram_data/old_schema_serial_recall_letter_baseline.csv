@@ -1,0 +1,15 @@
+participant_id,repetition,list_position,letter,typed_letter,correct,error_type
+1,1,1,F,F,True,
+1,1,2,V,V,True,
+1,1,3,T,M,False,other
+1,1,4,M,B,False,other
+1,1,5,B,H,False,other
+1,1,6,H,T,False,other
+1,1,7,N,W,False,visual
+1,1,1,C,C,True,
+1,1,2,V,V,True,
+1,1,3,G,G,True,
+1,1,4,H,H,True,
+1,1,5,F,F,True,
+1,1,6,T,V,False,phonological
+1,1,7,E,B,False,other
